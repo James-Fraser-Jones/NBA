@@ -15,6 +15,8 @@ public partial class NbaContext : DbContext
     {
     }
 
+    public virtual DbSet<Overview> Overviews { get; set; }
+
     public virtual DbSet<Game> Games { get; set; }
 
     public virtual DbSet<Player> Players { get; set; }

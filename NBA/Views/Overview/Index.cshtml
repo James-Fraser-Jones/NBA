@@ -1,0 +1,101 @@
+﻿@model IEnumerable<NBA.Models.Overview>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stadium)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Logo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeasonMVP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GamesPlayed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GamesWon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GamesLost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GamesHome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GamesAway)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BiggestWin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BiggestLoss)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastGameStadium)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastGameDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stadium)
+                </td>
+                <td>
+                    <img src="@item.Logo">
+                    @* @Html.DisplayFor(modelItem => item.Logo) *@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeasonMVP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GamesPlayed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GamesWon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GamesLost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GamesHome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GamesAway)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BiggestWin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BiggestLoss)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastGameStadium)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastGameDate)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
