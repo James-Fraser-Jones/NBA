@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -72,6 +73,7 @@ MVPPlayerFreq as (
 ),
 RankedMVPPlayerFreq as (
 	select *
+    --row_number explicitly allowed to select a player arbitrarily here, in the case of a tie
 	, row_number() over (partition by TeamId order by MVPPlayerFreq desc) as DenseRank
 	from MVPPlayerFreq
 ),
@@ -208,6 +210,13 @@ left join RecentGames on BasicData.TeamID = RecentGames.TeamID
 			var nbaContext = _context.Overviews.FromSqlRaw(overviewQuery);
 
             return View(await nbaContext.ToListAsync());
+        }
+
+        [Route("Home/Error")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
